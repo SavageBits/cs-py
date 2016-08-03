@@ -1,13 +1,17 @@
 table = [[] for x in range(10)]
 
-def hash_function(key): return key % 10
+def hash(input): return input % 10
 
-def insert(table,input,value): table[hash_function(input)].append((input,value))
+def insert(table,input,value): 
+  key = hash(input)
+  table[key].append((input,value))
+
+  return key
 
 def get(table,key):
   # get index by hashing the key
   # traverse list at key
-  for item in table[hash_function(key)]:
+  for item in table[hash(key)]:
     if item[0] == key:
       return item[1]
 
@@ -34,11 +38,16 @@ insert(table,41,'apple')
 insert(table,93,'banana')
 insert(table,13,'tangerine')
 insert(table,1141,'grapefruit')
-insert(table,hash_function(fold('543-321-9876')),'543-321-9876')
+
+newKey = fold('543-321-9876') 
+insert(table,newKey,'543-321-9876')
 
 print(table)
+print(newKey)
 
 print('value at key 93: ' + get(table,93))
 print('value at key 13: ' + get(table,13))
+print('value at key ' + str(newKey) + ': ' + get(table,newKey))
+
 
 # print(fold('543-321-9876'))
