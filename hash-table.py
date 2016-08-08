@@ -1,12 +1,14 @@
-table = [[] for x in range(10)]
+import random;
 
-def hash(input): return input % 10
+table = [[] for x in range(10)]
 
 def insert(table,input,value): 
   key = hash(input)
   table[key].append((input,value))
 
   return key
+
+def hash(input): return input % 10
 
 def get(table,key):
   # get index by hashing the key
@@ -49,5 +51,8 @@ print('value at key 93: ' + get(table,93))
 print('value at key 13: ' + get(table,13))
 print('value at key ' + str(newKey) + ': ' + get(table,newKey))
 
+for i in range(1,50):
+  insert(table,random.randint(1,9000),'value' + str(i))
 
-# print(fold('543-321-9876'))
+for x in range(0,len(table)):
+  print(table[x])
