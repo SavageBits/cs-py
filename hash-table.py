@@ -1,4 +1,4 @@
-import random;
+import random
 
 table = [[] for x in range(10)]
 
